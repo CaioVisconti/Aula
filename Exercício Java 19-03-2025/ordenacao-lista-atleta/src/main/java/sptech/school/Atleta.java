@@ -67,7 +67,7 @@ public class Atleta {
     public static void ordenarNomeCrescente (List<Atleta> lista) {
         String nomeComparado;
         Atleta atletaComparado;
-        Atleta aux = new Atleta("aux", "naotem");
+        Atleta aux;
         for(int i = 0; i < lista.size() - 1; i++) {
             Integer indice = i;
             Atleta atletaAtual = lista.get(i);
@@ -76,15 +76,15 @@ public class Atleta {
                 atletaComparado = lista.get(j);
                 nomeComparado = (atletaComparado).getNome();
 
-                if(nomeComparado.compareTo(nomeAtual) >= 0) {
+                if(nomeComparado.compareTo(nomeAtual) <= 0) {
                     indice = j;
                 }
             }
             atletaComparado = lista.get(indice);
 
-            aux.setNome(nomeAtual);
-            (atletaAtual).setNome(atletaComparado.getNome());
-            atletaComparado.setNome(aux.getNome());
+            aux = atletaAtual;
+            lista.set(i, atletaComparado);
+            lista.set(indice, aux);
 
         }
     }
@@ -92,35 +92,36 @@ public class Atleta {
     public static void ordenarNacionalidade(List<Atleta> lista) {
         String nacionalidadeComparada;
         Atleta atletaComparado;
-        Atleta aux = new Atleta("aux", "naotem");
-        for (int i = 0; i < lista.size(); i++) {
+        Atleta aux;
+        for(int i = 0; i < lista.size() - 1; i++) {
             Integer indice = i;
             Atleta atletaAtual = lista.get(i);
             String nacionalidadeAtual = (atletaAtual).getNacionalidade();
-            for (int j = 1; j < lista.size() - i; j++) {
+            for(int j = 1; j < lista.size(); j++) {
                 atletaComparado = lista.get(j);
                 nacionalidadeComparada = (atletaComparado).getNacionalidade();
 
-                if (nacionalidadeComparada.compareTo(nacionalidadeAtual) >= 0) {
+                if(nacionalidadeComparada.compareTo(nacionalidadeAtual) <= 0) {
                     indice = j;
-                    atletaComparado = lista.get(indice);
-                    aux.setNacionalidade(nacionalidadeAtual);
-                    (atletaAtual).setNacionalidade(atletaComparado.getNacionalidade());
-                    atletaComparado.setNacionalidade(aux.getNacionalidade());
                 }
             }
+            atletaComparado = lista.get(indice);
+
+            aux = atletaAtual;
+            lista.set(i, atletaComparado);
+            lista.set(indice, aux);
 
         }
     }
 
     public  static Integer pesquisaBinariaNome (List<Atleta> lista, String nome) {
         Integer inicio = 0;
-        Integer fim = lista.size();
+        Integer fim = lista.size() - 1;
         while(inicio <= fim) {
             Integer meio = (inicio + fim) / 2;
             Atleta atletaAtual = lista.get(meio);
 
-            if(nome == atletaAtual.getNome()) {
+            if(nome.equals(atletaAtual.getNome())) {
                 return meio;
             } else {
                 if(nome.compareTo(atletaAtual.getNome()) > 0) {
@@ -136,7 +137,7 @@ public class Atleta {
     public static void ordenarNomeDecrescente (List<Atleta> lista) {
         String nomeComparado;
         Atleta atletaComparado;
-        Atleta aux = new Atleta("AUX","nãotem");
+        Atleta aux;
         for(int i = lista.size() - 1; i >= 0; i--) {
             Atleta atletaAtual = (lista.get(i));
             String nomeAtual = atletaAtual.getNome();
@@ -144,17 +145,27 @@ public class Atleta {
             for(int j = lista.size() - i - 1; j >= 0; j--) {
                 atletaComparado = lista.get(j);
                 nomeComparado = atletaComparado.getNome();
-                if(nomeComparado.compareTo(nomeAtual) >= 0) {
+                if(nomeComparado.compareTo(nomeAtual) <= 0) {
                     indice = j;
                 }
             }
             atletaComparado = lista.get(indice);
-            nomeComparado = atletaComparado.getNome();
 
-            aux.setNome(nomeAtual);
-            atletaAtual.setNome(nomeComparado);
-            atletaComparado.setNome(aux.getNome());
+            aux = atletaAtual;
+            lista.set(i, atletaComparado);
+            lista.set(indice, aux);
         }
     }
 
+    @Override
+    public String toString() {
+        return "Atleta{" +
+                "idade=" + idade +
+                ", salario=" + salario +
+                ", treinador='" + treinador + '\'' +
+                ", nacionalidade='" + nacionalidade + '\'' +
+                ", nome='" + nome + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

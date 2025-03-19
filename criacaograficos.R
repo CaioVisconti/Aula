@@ -22,3 +22,14 @@ altura
 summary(altura)
 
 hist(altura, ylab = "Frequência", xlab = "Altura em metros")
+
+# Peso
+peso <- abs(round(rnorm(n, 55, 4), 2))
+summary(peso)
+
+hist(
+  peso,
+  main = "Histograma do Peso",
+  ylab = "Frequência",
+  xlab = "Peso em quilogramas"
+)
