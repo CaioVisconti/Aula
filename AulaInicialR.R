@@ -47,3 +47,6 @@ lista02 <- list(nomes = c('Tom', 'Bob'), idade = c(10, 20, 30, 40))
 lista02
 lista02$nomes
 lista02$idade
+
+listaTeste <- list(matrix(1:25, nrow = 5, ncol = 5))
+listaTeste[1]
