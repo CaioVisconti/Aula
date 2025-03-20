@@ -33,3 +33,4 @@ hist(
   ylab = "Frequência",
   xlab = "Peso em quilogramas"
 )
+
