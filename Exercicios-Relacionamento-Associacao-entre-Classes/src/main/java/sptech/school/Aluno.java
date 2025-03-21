@@ -43,6 +43,18 @@ public class Aluno {
         return ativo;
     }
 
+    public Boolean getInadimplente() {
+        return inadimplente;
+    }
+
+    public Double getNota1() {
+        return nota1;
+    }
+
+    public Double getNota2() {
+        return nota2;
+    }
+
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
