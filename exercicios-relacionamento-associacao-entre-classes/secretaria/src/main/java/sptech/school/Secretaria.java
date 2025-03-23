@@ -1,8 +1,5 @@
 package sptech.school;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Secretaria {
     private Integer totalInadimplentes = 0;
     private Integer totalCancelamentos = 0;
